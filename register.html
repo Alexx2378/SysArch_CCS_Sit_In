@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CCS Sit-in Monitoring System - Register</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+<header>
+<nav class="navbar">
+  <div class="logo">College of Computer Studies Sit-in Monitoring System</div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#community">Community ▼</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="login.html">Login</a></li>
+    <li><a href="register.html">Register</a></li>
+  </ul>
+</nav>
+</header>
+
+<main class="login-container">
+
+  <div id="register-message-modal" class="message-modal" aria-hidden="true">
+    <div class="message-box" role="alertdialog" aria-live="polite" aria-modal="true">
+      <h3 id="register-message-title">Message</h3>
+      <p id="register-message-text"></p>
+      <button type="button" id="register-message-close" class="message-close-btn">OK</button>
+    </div>
+  </div>
+
+  <!-- REGISTER FORM -->
+  <div class="register-box" id="registerBox">
+
+    <div class="register-head">
+      <h2>Create Account</h2>
+      <p class="subtitle">Join our student community to reserve labs, track sit-ins, and stay connected.</p>
+    </div>
+
+    <form id="registerForm" class="register-form-grid" action="register.php" method="POST" autocomplete="on" enctype="multipart/form-data">
+
+      <!-- LEFT COLUMN: Profile Photo & Basic Info -->
+      <section class="form-section profile-section">
+        <div class="section-title">
+          <i class="fa-solid fa-user-circle"></i> Profile
+        </div>
+
+        <!-- MODERN PHOTO UPLOAD SECTION -->
+        <div class="profile-photo-panel">
+          <!-- Photo Preview Circle -->
+          <div class="photo-circle-container">
+            <div class="profile-circle-wrap">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23f0ebf5' width='100' height='100'/%3E%3Ccircle cx='50' cy='35' r='20' fill='%236b6b8a'/%3E%3Cpath d='M20 85 Q20 55 50 55 Q80 55 80 85' fill='%236b6b8a'/%3E%3C/svg%3E" alt="Profile Preview" class="profile-preview" id="profile-preview">
+              <div class="circle-overlay"></div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons-ring">
+              <button type="button" id="quick-camera-btn" class="action-btn camera-btn" title="Take a photo with your camera" aria-label="Take photo">
+                <i class="fa-solid fa-camera"></i>
+                <span class="btn-label">Camera</span>
+              </button>
+              <button type="button" class="action-btn upload-btn" id="upload-img-btn" title="Upload photo from device" aria-label="Upload photo">
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+                <span class="btn-label">Upload</span>
+              </button>
+            </div>
+          </div>
+
+          <p class="photo-instruction">Click camera or upload to add your profile photo</p>
+
+          <!-- Hidden File Input -->
+          <input type="file" id="profile-image" name="profile_image" accept="image/*" capture="user" class="hidden-file-input">
+          <input type="hidden" id="camera-image-data" name="camera_image_data" value="">
+
+          <!-- Camera UI Modal -->
+          <div class="camera-modal" id="camera-modal">
+            <div class="camera-modal-content">
+              <div class="camera-modal-header">
+                <h3><i class="fa-solid fa-camera"></i> Capture Photo</h3>
+                <button type="button" class="modal-close-btn" id="close-camera-modal" aria-label="Close camera">
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+              </div>
+
+              <div class="camera-preview-container">
+                <video id="camera-preview" class="camera-preview" autoplay playsinline muted></video>
+                <canvas id="camera-canvas" class="camera-canvas" style="display: none;"></canvas>
+              </div>
+
+              <div class="camera-instructions" id="camera-instructions">
+                <p><i class="fa-solid fa-info-circle"></i> Position your face in the center and click Capture</p>
+              </div>
+
+              <div class="camera-actions">
+                <button type="button" class="camera-action-btn start-btn" id="start-camera-btn">
+                  <i class="fa-solid fa-play"></i> Start Camera
+                </button>
+                <button type="button" class="camera-action-btn capture-btn" id="capture-camera-btn">
+                  <i class="fa-solid fa-circle-dot"></i> Capture
+                </button>
+                <button type="button" class="camera-action-btn stop-btn" id="stop-camera-btn">
+                  <i class="fa-solid fa-stop"></i> Stop
+                </button>
+              </div>
+
+              <div class="camera-action-row">
+                <button type="button" class="camera-secondary-btn accept-btn" id="accept-camera-btn">
+                  <i class="fa-solid fa-check"></i> Accept Photo
+                </button>
+                <button type="button" class="camera-secondary-btn retake-btn" id="retake-camera-btn">
+                  <i class="fa-solid fa-arrow-rotate-left"></i> Retake
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="idNumber"><i class="fa-solid fa-id-card"></i> ID Number</label>
+          <input type="text" id="idNumber" name="idNumber" placeholder="ID Number" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="lastName"><i class="fa-solid fa-user"></i> Last Name</label>
+            <input type="text" id="lastName" name="lastName" placeholder="Last Name" required>
+          </div>
+          <div class="form-group">
+            <label for="firstName"><i class="fa-solid fa-user"></i> First Name</label>
+            <input type="text" id="firstName" name="firstName" placeholder="First Name" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="middleName"><i class="fa-solid fa-user-tag"></i> Middle Name</label>
+          <input type="text" id="middleName" name="middleName" placeholder="Middle Name">
+        </div>
+      </section>
+
+      <!-- RIGHT COLUMN: Academic & Account Info -->
+      <section class="form-section account-section">
+        <div class="section-title">
+          <i class="fa-solid fa-lock"></i> Account Details
+        </div>
+
+        <div class="form-group">
+          <label for="course"><i class="fa-solid fa-graduation-cap"></i> Course</label>
+          <select id="course" name="course" required>
+            <option value="" disabled selected>Select Course</option>
+            <option value="Information Technology">Information Technology</option>
+            <option value="Computer Science">Computer Science</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="courseLevel"><i class="fa-solid fa-layer-group"></i> Year Level</label>
+          <select id="courseLevel" name="courseLevel" required>
+            <option value="" disabled selected>Select Year Level</option>
+            <option value="1">1st Year</option>
+            <option value="2">2nd Year</option>
+            <option value="3">3rd Year</option>
+            <option value="4">4th Year</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="email"><i class="fa-solid fa-envelope"></i> Email</label>
+          <input type="email" id="email" name="email" placeholder="Email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="address"><i class="fa-solid fa-location-dot"></i> Address</label>
+          <input type="text" id="address" name="address" placeholder="Address">
+        </div>
+
+        <div class="form-group">
+          <label for="password"><i class="fa-solid fa-key"></i> Password</label>
+          <div class="input-with-toggle">
+            <input type="password" id="password" name="password" placeholder="Password" required autocomplete="new-password">
+            <button type="button" class="toggle-password reg-toggle" data-target="password" aria-label="Show password" aria-pressed="false" title="Show password"><i class="fa-regular fa-eye"></i></button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword"><i class="fa-solid fa-shield-halved"></i> Confirm Password</label>
+          <div class="input-with-toggle">
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required autocomplete="new-password">
+            <button type="button" class="toggle-toggle reg-toggle" data-target="confirmPassword" aria-label="Show password" aria-pressed="false" title="Show password"><i class="fa-regular fa-eye"></i></button>
+          </div>
+        </div>
+      </section>
+
+      <!-- FOOTER: Spanning both columns -->
+      <div class="form-footer-register">
+        <button type="submit" class="submit-btn-register"><i class="fa-solid fa-user-plus"></i> Create Account</button>
+        <p class="login-link">Already have an account? <a href="login.html"><i class="fa-solid fa-arrow-right"></i> Login</a></p>
+      </div>
+
+    </form>
+  </div>
+
+</main>
+
+<script src="script.js"></script>
+<script>
+  (function () {
+    // ─────────────────────────────────────
+    // MODERN CAMERA & PHOTO HANDLING
+    // ─────────────────────────────────────
+    
+    const profilePreview = document.getElementById("profile-preview");
+    const profileImage = document.getElementById("profile-image");
+    const cameraImageData = document.getElementById("camera-image-data");
+    const quickCameraBtn = document.getElementById("quick-camera-btn");
+    const uploadImgBtn = document.getElementById("upload-img-btn");
+    const cameraModal = document.getElementById("camera-modal");
+    const closeCameraModalBtn = document.getElementById("close-camera-modal");
+    const cameraPreview = document.getElementById("camera-preview");
+    const cameraCanvas = document.getElementById("camera-canvas");
+    const startCameraBtn = document.getElementById("start-camera-btn");
+    const captureCameraBtn = document.getElementById("capture-camera-btn");
+    const stopCameraBtn = document.getElementById("stop-camera-btn");
+    const acceptCameraBtn = document.getElementById("accept-camera-btn");
+    const retakeCameraBtn = document.getElementById("retake-camera-btn");
+    const cameraInstructions = document.querySelector(".camera-instructions");
+
+    let mediaStream = null;
+
+    // ── FILE UPLOAD HANDLER ──
+    uploadImgBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      profileImage.click();
+    });
+
+    profileImage.addEventListener("change", function () {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          profilePreview.src = e.target.result;
+          cameraImageData.value = "";
+          showNotification("Photo uploaded successfully!", "success");
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // ── CAMERA MODAL HANDLERS ──
+    quickCameraBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      cameraModal.classList.add("active");
+      resetCameraUI();
+    });
+
+    closeCameraModalBtn.addEventListener("click", function () {
+      closeCameraModal();
+    });
+
+    cameraModal.addEventListener("click", function (e) {
+      if (e.target === cameraModal) {
+        closeCameraModal();
+      }
+    });
+
+    function closeCameraModal() {
+      stopCamera();
+      cameraModal.classList.remove("active");
+    }
+
+    function resetCameraUI() {
+      cameraInstructions.classList.remove("hidden");
+      startCameraBtn.classList.remove("hidden");
+      captureCameraBtn.classList.add("hidden");
+      stopCameraBtn.classList.add("hidden");
+      acceptCameraBtn.classList.add("hidden");
+      retakeCameraBtn.classList.add("hidden");
+      cameraPreview.style.display = "none";
+      cameraCanvas.style.display = "none";
+    }
+
+    // ── START CAMERA ──
+    startCameraBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      startCamera();
+    });
+
+    function startCamera() {
+      if (mediaStream) return;
+
+      navigator.mediaDevices
+        .getUserMedia({ video: { facingMode: "user" } })
+        .then((stream) => {
+          mediaStream = stream;
+          cameraPreview.srcObject = stream;
+          cameraPreview.style.display = "block";
+          cameraInstructions.classList.add("hidden");
+          startCameraBtn.classList.add("hidden");
+          captureCameraBtn.classList.remove("hidden");
+          stopCameraBtn.classList.remove("hidden");
+        })
+        .catch((err) => {
+          showNotification("Camera access denied: " + err.message, "error");
+          closeCameraModal();
+        });
+    }
+
+    // ── STOP CAMERA ──
+    stopCameraBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      stopCamera();
+      resetCameraUI();
+    });
+
+    function stopCamera() {
+      if (mediaStream) {
+        mediaStream.getTracks().forEach((track) => track.stop());
+        mediaStream = null;
+      }
+      cameraPreview.srcObject = null;
+      cameraCanvas.style.display = "none";
+    }
+
+    // ── CAPTURE PHOTO ──
+    captureCameraBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      if (!mediaStream) return;
+
+      const ctx = cameraCanvas.getContext("2d");
+      cameraCanvas.width = cameraPreview.videoWidth;
+      cameraCanvas.height = cameraPreview.videoHeight;
+      ctx.drawImage(cameraPreview, 0, 0);
+
+      cameraPreview.style.display = "none";
+      cameraCanvas.style.display = "block";
+      captureCameraBtn.classList.add("hidden");
+      stopCameraBtn.classList.add("hidden");
+      acceptCameraBtn.classList.remove("hidden");
+      retakeCameraBtn.classList.remove("hidden");
+      cameraInstructions.classList.add("hidden");
+    });
+
+    // ── ACCEPT CAPTURED PHOTO ──
+    acceptCameraBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      cameraCanvas.toBlob((blob) => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          profilePreview.src = e.target.result;
+          cameraImageData.value = e.target.result;
+          profileImage.value = "";
+          closeCameraModal();
+          showNotification("Photo captured successfully!", "success");
+        };
+        reader.readAsDataURL(blob);
+      });
+    });
+
+    // ── RETAKE PHOTO ──
+    retakeCameraBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      if (mediaStream) {
+        cameraPreview.srcObject = mediaStream;
+        cameraPreview.style.display = "block";
+        cameraCanvas.style.display = "none";
+        acceptCameraBtn.classList.add("hidden");
+        retakeCameraBtn.classList.add("hidden");
+        captureCameraBtn.classList.remove("hidden");
+        stopCameraBtn.classList.remove("hidden");
+      }
+    });
+
+    // ── NOTIFICATION HELPER ──
+    function showNotification(message, type = "info") {
+      const notification = document.createElement("div");
+      notification.style.cssText = `
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        padding: 16px 20px;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        animation: slideInRight 0.3s ease;
+        z-index: 2000;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      `;
+
+      if (type === "success") {
+        notification.style.background = "linear-gradient(135deg, #22c55e, #16a34a)";
+        notification.style.color = "#fff";
+        notification.innerHTML = `<i class="fa-solid fa-check-circle"></i> ${message}`;
+      } else if (type === "error") {
+        notification.style.background = "linear-gradient(135deg, #ef4444, #dc2626)";
+        notification.style.color = "#fff";
+        notification.innerHTML = `<i class="fa-solid fa-exclamation-circle"></i> ${message}`;
+      } else {
+        notification.style.background = "linear-gradient(135deg, #3b82f6, #2563eb)";
+        notification.style.color = "#fff";
+        notification.innerHTML = `<i class="fa-solid fa-info-circle"></i> ${message}`;
+      }
+
+      document.body.appendChild(notification);
+
+      setTimeout(() => {
+        notification.style.animation = "slideOutRight 0.3s ease";
+        setTimeout(() => notification.remove(), 300);
+      }, 4000);
+    }
+
+    // ─────────────────────────────────────
+    // PASSWORD TOGGLE & MESSAGE MODAL
+    // ─────────────────────────────────────
+
+    const modal = document.getElementById("register-message-modal");
+    const title = document.getElementById("register-message-title");
+    const text = document.getElementById("register-message-text");
+    const closeBtn = document.getElementById("register-message-close");
+
+    const params = new URLSearchParams(window.location.search);
+    const status = params.get("status");
+    const code = params.get("code");
+
+    const messages = {
+      success: {
+        registered: {
+          title: "Registration Successful",
+          text: "Your account was created successfully. You can now log in.",
+        },
+      },
+      error: {
+        duplicate: {
+          title: "Registration Error",
+          text: "This email or ID number already exists.",
+        },
+        required: {
+          title: "Missing Information",
+          text: "Please fill in all required fields.",
+        },
+        email: {
+          title: "Invalid Email",
+          text: "Please enter a valid email address.",
+        },
+        password_mismatch: {
+          title: "Password Mismatch",
+          text: "Password and Confirm Password do not match.",
+        },
+        password_length: {
+          title: "Weak Password",
+          text: "Password must be at least 8 characters.",
+        },
+        db: {
+          title: "System Error",
+          text: "Unable to complete registration right now. Please try again.",
+        },
+      },
+    };
+
+    // ── PASSWORD TOGGLE BUTTONS ──
+    document.querySelectorAll(".reg-toggle").forEach(function (btn) {
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        const targetId = btn.getAttribute("data-target");
+        const target = document.getElementById(targetId);
+        if (!target) return;
+
+        const showing = target.type === "text";
+        target.type = showing ? "password" : "text";
+        btn.setAttribute("aria-label", showing ? "Show password" : "Hide password");
+        btn.setAttribute("aria-pressed", showing ? "false" : "true");
+        btn.setAttribute("title", showing ? "Show password" : "Hide password");
+        btn.innerHTML = showing
+          ? '<i class="fa-regular fa-eye"></i>'
+          : '<i class="fa-regular fa-eye-slash"></i>';
+      });
+    });
+
+    // ── MESSAGE MODAL ──
+    const selected = status && code && messages[status] ? messages[status][code] : null;
+    if (selected && modal && title && text && closeBtn) {
+      title.textContent = selected.title;
+      text.textContent = selected.text;
+      modal.classList.add("show");
+      modal.setAttribute("aria-hidden", "false");
+
+      closeBtn.addEventListener("click", function () {
+        modal.classList.remove("show");
+        modal.setAttribute("aria-hidden", "true");
+
+        const cleanUrl = window.location.pathname;
+        window.history.replaceState({}, document.title, cleanUrl);
+
+        if (status === "success") {
+          window.location.href = "login.html";
+        }
+      });
+    }
+
+    // ── KEYBOARD SHORTCUT (ESC to close camera) ──
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && cameraModal.classList.contains("active")) {
+        closeCameraModal();
+      }
+    });
+  })();
+
+  // ADD SLIDE ANIMATIONS
+  const style = document.createElement("style");
+  style.textContent = `
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    @keyframes slideOutRight {
+      from {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      to {
+        opacity: 0;
+        transform: translateX(20px);
+      }
+    }
+  `;
+  document.head.appendChild(style);
+</script>
+</body>
+</html>
