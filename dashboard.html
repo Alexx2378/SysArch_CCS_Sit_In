@@ -1,0 +1,324 @@
+
+ <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Dashboard</title>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dashboard.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  </head>
+  <body>
+   <div class="bg-shape shape-one" aria-hidden="true"></div>
+   <div class="bg-shape shape-two" aria-hidden="true"></div>
+  
+    <header class="topbar">
+     <div class="brand-wrap">
+       <p class="brand-eyebrow">University of Cebu</p>
+       <div class="logo">Student Dashboard</div>
+     </div>
+  
+     <nav class="nav-links" aria-label="Dashboard Navigation">
+       <a href="#" id="home-link" class="active-nav"><i class="fa-solid fa-house"></i> Home</a>
+       <a href="#" id="notification-link"><i class="fa-solid fa-bell"></i> Notifications</a>
+       <a href="#" id="edit-profile-link"><i class="fa-solid fa-user-pen"></i> Edit Profile</a>
+        <a href="#" id="history-link"><i class="fa-solid fa-clock-rotate-left"></i> History</a>
+        <a href="#" id="reservation-link"><i class="fa-solid fa-calendar-check"></i> Reservation</a>
+       <a href="login.html" class="logout-btn"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</a>
+      </nav>
+    </header>
+  
+   <main class="main-content">
+     <section id="home-page" class="page active-page" aria-label="Home Page">
+       <div class="page-intro">
+         <h1>Welcome back, Alexandra!</h1>
+         <p>Track announcements, sessions, rules, and lab activity in one place.</p>
+       </div>
+ 
+       <div class="quick-stats">
+         <article class="stat-card">
+           <span class="stat-label">Remaining Sessions</span>
+           <h3>30</h3>
+           <i class="fa-regular fa-hourglass-half"></i>
+         </article>
+         <article class="stat-card">
+           <span class="stat-label">Current Year</span>
+           <h3>3rd Year</h3>
+           <i class="fa-solid fa-layer-group"></i>
+         </article>
+         <article class="stat-card">
+           <span class="stat-label">Program</span>
+           <h3>BSIT</h3>
+           <i class="fa-solid fa-graduation-cap"></i>
+         </article>
+       </div>
+ 
+        <div class="dashboard-container">
+          <section class="card student-card">
+            <div class="card-header">
+              <i class="fa-solid fa-user-graduate"></i>
+              <span>Student Information</span>
+            </div>
+  
+            <div class="profile-section">
+              <img src="https://via.placeholder.com/120" alt="Student Profile" class="profile-img">
+              <h3>Alexandra Santillan Formentera</h3>
+             <p class="student-role">Bachelor of Science in Information Technology</p>
+            </div>
+  
+            <div class="info-list">
+              <div class="info-item">
+               <i class="fa-solid fa-id-card"></i>
+               <span><strong>ID Number:</strong> 2379866</span>
+              </div>
+              <div class="info-item">
+                <i class="fa-solid fa-book"></i>
+                <span><strong>Course:</strong> BSIT</span>
+              </div>
+              <div class="info-item">
+                <i class="fa-solid fa-layer-group"></i>
+                <span><strong>Year:</strong> 3</span>
+              </div>
+              <div class="info-item">
+                <i class="fa-solid fa-envelope"></i>
+                <span><strong>Email:</strong> formenteralex@gmail.com</span>
+              </div>
+              <div class="info-item">
+                <i class="fa-solid fa-location-dot"></i>
+               <span><strong>Address:</strong> C. Rodriguez, Capitol, Cebu City</span>
+              </div>
+              <div class="info-item">
+                <i class="fa-solid fa-clock"></i>
+               <span><strong>Session Credits:</strong> 30</span>
+              </div>
+            </div>
+          </section>
+  
+          <section class="card announcement-card">
+            <div class="card-header">
+              <i class="fa-solid fa-bullhorn"></i>
+             <span>Latest Announcements</span>
+            </div>
+  
+            <div class="announcement-list">
+             <article class="announcement-item">
+               <h4>CCS Admin • 2026-Feb-11</h4>
+               <p>Stay updated with campus activities, laboratory schedules, and department notices posted weekly.</p>
+             </article>
+             <article class="announcement-item">
+               <h4>CCS Admin • 2026-Jan-28</h4>
+               <p>New reservation windows are now available for the software engineering and networking laboratories.</p>
+             </article>
+             <article class="announcement-item">
+               <h4>CCS Admin • 2025-Dec-10</h4>
+               <p>Please check your reservation status 24 hours before class to avoid schedule conflicts.</p>
+             </article>
+            </div>
+          </section>
+  
+          <section class="card rules-card">
+            <div class="card-header">
+              <i class="fa-solid fa-scale-balanced"></i>
+             <span>Laboratory Rules and Regulation</span>
+            </div>
+  
+            <div class="rules-content">
+              <h2>University of Cebu</h2>
+             <h3>College of Information and Computer Studies</h3>
+             <h4>Laboratory Guidelines</h4>
+             <p>To maintain safety, respect, and productivity in the laboratory, observe these rules:</p>
+              <ol>
+               <li>Maintain silence, proper decorum, and discipline inside the laboratory.</li>
+               <li>Games and unrelated activities are not allowed during laboratory sessions.</li>
+               <li>Internet use is for academic purposes only, with instructor approval.</li>
+               <li>Observe cleanliness and keep workstations free from clutter or trash.</li>
+               <li>Eating, drinking, and vandalism are strictly prohibited in all labs.</li>
+              </ol>
+            </div>
+          </section>
+        </div>
+      </section>
+  
+     <section id="edit-profile-page" class="page" aria-label="Edit Profile Page">
+        <div class="form-page-wrapper">
+         <div class="page-head">
+           <h2 class="page-title">Edit Profile</h2>
+           <p>Update your personal and academic details below.</p>
+         </div>
+  
+         <form class="simple-form" autocomplete="off">
+           <div class="simple-form-grid">
+             <div class="simple-form-row">
+               <label for="student-id">ID Number</label>
+               <input type="text" id="student-id" value="2379866">
+             </div>
+             <div class="simple-form-row">
+               <label for="course">Course</label>
+               <input type="text" id="course" value="BSIT">
+             </div>
+  
+             <div class="simple-form-row">
+               <label for="last-name">Last Name</label>
+               <input type="text" id="last-name" value="Formentera">
+             </div>
+             <div class="simple-form-row">
+               <label for="year-level">Year Level</label>
+               <input type="text" id="year-level" value="3">
+             </div>
+  
+             <div class="simple-form-row">
+               <label for="first-name">First Name</label>
+               <input type="text" id="first-name" value="Alexandra">
+             </div>
+             <div class="simple-form-row">
+               <label for="middle-name">Middle Name</label>
+               <input type="text" id="middle-name" value="Santillan">
+             </div>
+ 
+             <div class="simple-form-row full-width">
+               <label for="email">Email</label>
+               <input type="email" id="email" value="formenteralex@gmail.com">
+             </div>
+  
+             <div class="simple-form-row full-width">
+               <label for="address">Address</label>
+               <input type="text" id="address" value="C. Rodriguez, Capitol, Cebu City">
+             </div>
+            </div>
+  
+            <div class="simple-form-actions">
+             <button type="submit" class="primary-btn">Save Changes</button>
+            </div>
+          </form>
+        </div>
+      </section>
+  
+     <section id="notification-page" class="page" aria-label="Notifications Page">
+        <div class="placeholder-page">
+         <div class="page-head">
+           <h2 class="page-title">Notifications</h2>
+           <p>Recent updates from administrators and instructors.</p>
+         </div>
+ 
+         <div class="timeline-list">
+           <article class="timeline-item">
+             <span class="timeline-date">Mar 20, 2026</span>
+             <h4>Room 524 Reservation Approved</h4>
+             <p>Your lab reservation for C Programming has been confirmed from 1:00 PM to 3:00 PM.</p>
+           </article>
+           <article class="timeline-item">
+             <span class="timeline-date">Mar 18, 2026</span>
+             <h4>Lab Orientation Reminder</h4>
+             <p>Please arrive 15 minutes early for orientation and bring your school ID.</p>
+           </article>
+           <article class="timeline-item">
+             <span class="timeline-date">Mar 15, 2026</span>
+             <h4>Session Credits Updated</h4>
+             <p>Your remaining session balance has been refreshed to 30 credits.</p>
+           </article>
+         </div>
+        </div>
+      </section>
+  
+     <section id="history-page" class="page" aria-label="History Page">
+        <div class="placeholder-page">
+         <div class="page-head">
+           <h2 class="page-title">Activity History</h2>
+           <p>Review your latest lab entries and reservation activity.</p>
+         </div>
+ 
+         <div class="history-table-wrap">
+           <table class="history-table">
+             <thead>
+               <tr>
+                 <th>Date</th>
+                 <th>Activity</th>
+                 <th>Lab</th>
+                 <th>Status</th>
+               </tr>
+             </thead>
+             <tbody>
+               <tr>
+                 <td>2026-03-20</td>
+                 <td>C Programming Session</td>
+                 <td>524</td>
+                 <td><span class="status-pill done">Completed</span></td>
+               </tr>
+               <tr>
+                 <td>2026-03-12</td>
+                 <td>Database Consultation</td>
+                 <td>518</td>
+                 <td><span class="status-pill done">Completed</span></td>
+               </tr>
+               <tr>
+                 <td>2026-03-03</td>
+                 <td>Reservation Request</td>
+                 <td>524</td>
+                 <td><span class="status-pill pending">Pending</span></td>
+               </tr>
+             </tbody>
+           </table>
+         </div>
+        </div>
+      </section>
+  
+     <section id="reservation-page" class="page" aria-label="Reservation Page">
+        <div class="form-page-wrapper">
+         <div class="page-head">
+           <h2 class="page-title">New Reservation</h2>
+           <p>Complete your laboratory reservation details.</p>
+         </div>
+  
+         <form class="simple-form" autocomplete="off">
+           <div class="simple-form-grid">
+             <div class="simple-form-row">
+               <label for="reserve-id">ID Number</label>
+               <input type="text" id="reserve-id" value="2379866">
+             </div>
+  
+             <div class="simple-form-row">
+               <label for="reserve-name">Student Name</label>
+               <input type="text" id="reserve-name" value="Alexandra Santillan Formentera">
+             </div>
+  
+             <div class="simple-form-row">
+               <label for="reserve-purpose">Purpose</label>
+               <input type="text" id="reserve-purpose" value="C Programming">
+             </div>
+  
+             <div class="simple-form-row">
+               <label for="reserve-lab">Laboratory</label>
+               <input type="text" id="reserve-lab" value="524">
+             </div>
+  
+             <div class="simple-form-row">
+               <label for="reserve-time">Time In</label>
+               <input type="time" id="reserve-time">
+             </div>
+  
+             <div class="simple-form-row">
+               <label for="reserve-date">Date</label>
+               <input type="date" id="reserve-date">
+             </div>
+  
+             <div class="simple-form-row full-width">
+               <label for="reserve-sessions">Remaining Sessions</label>
+               <input type="text" id="reserve-sessions" value="30" readonly>
+             </div>
+            </div>
+  
+           <div class="simple-form-actions action-split">
+             <button type="submit" class="primary-btn">Submit Request</button>
+             <button type="button" class="ghost-btn">Reserve Now</button>
+            </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
